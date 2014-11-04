@@ -11,6 +11,8 @@
 if (empty($pathname)) {
   $dir_file = $_SERVER['SCRIPT_NAME'];
   $pathname = realpath(basename($dir_file));
+  $msg = "加 ?pathname=<路径> 传入要计算md5的文";
+  echo $msg;
 }
 
 @$obj->path = $pathname;
