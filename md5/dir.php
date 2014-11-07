@@ -12,7 +12,7 @@ set_time_limit(1800) ;
 @$enableMd5 = $_GET["md5"];
 if (empty($pathname)) {
   //$dir_file = $_SERVER['SCRIPT_NAME'];
-	$dir_file = "";
+	$dir_file = "/";
   $pathname = realpath(basename($dir_file));
   $msg = "加 ?pathname=<路径>&md5=&lt;true or false> 传入要计算md5的路径<br />";
   echo $msg;
