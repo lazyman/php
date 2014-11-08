@@ -20,24 +20,24 @@ if (empty($pathname)) {
 }
 
 $dir = dir($pathname);
-$rtn = array();
+$fileinfos = array();
 while( $file = $dir->read() ) {
 	$file = $pathname . "/" . $file;
 
-	$obj = array();
-	$obj["pathname"] = $file;
+	$fileinfo = array();
+	$fileinfo["pathname"] = $file;
 	if( is_dir( $file ) ) {
-		$obj["isdir"] = "true";
-		$obj["size"] = -1;
+		$fileinfo["isdir"] = "true";
+		$fileinfo["size"] = -1;
 	} else {
-		$obj["isdir"] = "false";
-		$obj["size"] = filesize($file);
+		$fileinfo["isdir"] = "false";
+		$fileinfo["size"] = filesize($file);
 		if( $enableMd5 == "true" ) {
-			$obj["md5"] = md5_file( $file);
+			$fileinfo["md5"] = md5_file( $file);
 		}
 	}
 
-	$rtn[] = $obj;
+	$fileinfos[] = $fileinfo;
 }
-echo json_encode($rtn);
+echo json_encode($fileinfos);
 ?>
